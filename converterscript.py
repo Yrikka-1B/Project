@@ -12,23 +12,22 @@ from pathlib import Path
 from collections import defaultdict
 from PIL import Image
 
-# ========= CONFIG (edit only if your project lives elsewhere) =========
+# configure the path
 PROJECT_ROOT = Path("/Users/vaisp/PyCharmMiscProject")
 
 COCO_JSON    = PROJECT_ROOT / "cocodata/clean_coco.json"
-IMAGES_ROOT  = PROJECT_ROOT / "cocodata/images_all"   # <-- created by gather_images.py
+IMAGES_ROOT  = PROJECT_ROOT / "cocodata/images_all"   
 OUT_DIR      = PROJECT_ROOT / "yolo_dataset"
 
-# The 5 classes you want to train on (order defines YOLO class IDs: 0..4)
+#5 classes to train
 KEEP_CLASSES = ["chair", "potted plant", "vase", "book", "cup"]
 
-# Train/val/test split (on *kept* images)
+# test train split values
 SPLIT_RATIOS = (0.8, 0.1, 0.1)  # 80/10/10
 SEED         = 42
-# =====================================================================
 
+#converts the coco to yaml format for YOLO model
 def to_xywh_norm(xywh, W, H):
-    """Convert COCO xywh (absolute) -> YOLO xywh (normalized)."""
     x, y, w, h = xywh
     xc = (x + w / 2.0) / max(W, 1)
     yc = (y + h / 2.0) / max(H, 1)
@@ -44,15 +43,15 @@ def main():
     with open(COCO_JSON, "r") as f:
         coco = json.load(f)
 
-    # COCO categories -> names
+    # uses the categories predefined
     coco_id_to_name = {c["id"]: c["name"] for c in coco["categories"]}
 
-    # Keep only the 5 classes (map names -> contiguous YOLO IDs 0..4)
+    # keeps the 5 classes needed
     name_to_yolo = {name: i for i, name in enumerate(KEEP_CLASSES)}
     yolo_to_name = {i: n for n, i in name_to_yolo.items()}
     keep_coco_ids = {cid for cid, n in coco_id_to_name.items() if n in KEEP_CLASSES}
 
-    # Group annotations by image, but only those with kept categories
+    # groups annotations, but only based on the class
     images = {im["id"]: im for im in coco["images"]}
     anns_by_im = defaultdict(list)
     for a in coco["annotations"]:
@@ -62,14 +61,14 @@ def main():
         if a["category_id"] in keep_coco_ids:
             anns_by_im[a["image_id"]].append(a)
 
-    # Keep an image only if it has at least one kept annotation
+    # if an image contains at least one annotation then keep it
     kept_image_ids = [iid for iid, L in anns_by_im.items() if len(L) > 0]
     total_kept = len(kept_image_ids)
     if total_kept == 0:
         print("❌ No images contain the 5 target classes. Check KEEP_CLASSES or your COCO JSON.")
         return
 
-    # Split
+    # split
     random.shuffle(kept_image_ids)
     r_train, r_val, r_test = SPLIT_RATIOS
     n_train = int(r_train * total_kept)
@@ -88,16 +87,15 @@ def main():
 
     for iid in kept_image_ids:
         im = images[iid]
-        fname = im["file_name"]  # e.g., "xxx.png"
+        fname = im["file_name"]  
         src = IMAGES_ROOT / fname
         if not src.exists():
-            # If your gather_images.py ran, everything should be here.
-            # If not found, you may have missed a folder during gathering.
+            #test to make sure all images are gathered
             print("Missing image (not in images_all):", fname)
             missing += 1
             continue
 
-        # Width/height (trust COCO if present, else read from image)
+        # width / height of the images
         W = im.get("width")
         H = im.get("height")
         if not W or not H:
@@ -114,7 +112,7 @@ def main():
         shutil.copy2(src, dst_img)
         copied += 1
 
-        # Write YOLO label file for kept annotations
+        # yolo label file
         lines = []
         for a in anns_by_im[iid]:
             cname = coco_id_to_name[a["category_id"]]
@@ -125,7 +123,7 @@ def main():
         (OUT_DIR / "labels" / sp / (dst_img.stem + ".txt")).write_text("\n".join(lines))
         label_counts[sp] += 1
 
-    # Write data.yaml (paths relative to 'path:')
+    # yaml file for the conversion
     yaml = (
         f"path: {OUT_DIR}\n"
         f"train: images/train\n"
@@ -137,7 +135,7 @@ def main():
     )
     (OUT_DIR / "data.yaml").write_text(yaml)
 
-    print(f"✅ Done.")
+    #test just to make sure all images have been copied, data split into test and train and val, and yaml file created
     print(f"   Copied images: {copied}")
     print(f"   Missing images (not found under {IMAGES_ROOT}): {missing}")
     print(f"   Labels written -> train: {label_counts['train']}, val: {label_counts['val']}, test: {label_counts['test']}")
