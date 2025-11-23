@@ -1,4 +1,3 @@
-# Project
 # Object Detection Project – YRIKKA x Break Through Tech
 
 ## 📌 Overview
