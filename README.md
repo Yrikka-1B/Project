@@ -31,7 +31,3 @@ The work involves:
 - NumPy  
 - Google Collab  
 - Annotation tools (CVAT)  
-
----
-
-## 📂 Repository Structure
