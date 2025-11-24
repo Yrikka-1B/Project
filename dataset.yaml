@@ -1,0 +1,5 @@
+path: ./dataset
+train: images
+val: images
+nc: 5
+names: ["potted plant", "chair", "cup", "vase", "book"]
