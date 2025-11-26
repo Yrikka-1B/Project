@@ -1,5 +1,11 @@
-path: ./dataset
-train: images
-val: images
+#path: ./dataset
+#train: images
+#val: images
+#nc: 5
+#names: ["potted plant", "chair", "cup", "vase", "book"]
+
+path: ./dataset/split_dataset
+train: images/train
+val: images/val
 nc: 5
 names: ["potted plant", "chair", "cup", "vase", "book"]
