@@ -121,6 +121,7 @@ def run():
     print("Done! Worst 10% images saved in:")
     print(BAD_OUT)
 
+    
 
 if __name__ == "__main__":
     run()
