@@ -1,6 +1,8 @@
 import os
+from pathlib import Path
 import shutil
 import json
+from xml.parsers.expat import model
 from ultralytics import YOLO
 import numpy as np
 
@@ -68,12 +70,11 @@ def score_image(gt_boxes, pred_boxes):
 
     return error
 
-def run():
+def run(img_dir, lab_dir):
     model = YOLO("yolo11n.pt")  # load small YOLO
 
-    IMG_DIR = "dataset/images"
-    LAB_DIR = "dataset/labels"
-
+    IMG_DIR = img_dir
+    LAB_DIR = lab_dir
     OUT_DIR = "inference_results"
     BAD_OUT = os.path.join(OUT_DIR, "hardest_10_percent")
     os.makedirs(BAD_OUT, exist_ok=True)
@@ -123,4 +124,18 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    run("dataset/images", "dataset/labels")
+    #rerun the model with real world images
+
+    save_dir = Path("runs/predict")
+    save_dir.mkdir(parents=True, exist_ok=True)
+    model = YOLO("yolo11n.pt")  # load small YOLO
+    results = model.predict(source='real_world_dataset copy', save=False, conf=0.25)
+    for result in results:
+        # Create a full filename with extension (jpg/png)
+        output_path = save_dir / Path(result.path).name  
+        
+        # Save prediction overlay image
+        result.save(filename=str(output_path))
+
+

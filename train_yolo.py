@@ -13,7 +13,7 @@ def train_yolo_model():
     # Train the model
     results = model.train(
         data='dataset.yaml',  # path to dataset YAML
-        epochs=10,  # number of training epochs
+        epochs=50,  # number of training epochs
         imgsz=640,  # input image size
         batch=16,  # batch size (reduce if memory issues)
         name='yolo11_finetuned',  # name for this training run
@@ -48,6 +48,38 @@ def train_yolo_model():
 
     return results
 
+def predict_new_images():
+    model = YOLO("runs/train/yolo11_finetuned/weights/best.pt")  # load fine-tuned model
+    real_world_images = '/real_world_dataset copy'
+    results = model.predict(
+        source=real_world_images, 
+        save=True,  # save images with predictions
+        save_txt=True,  # save predictions as .txt files
+        save_conf=True,  # save confidence scores
+        conf=0.25,  # confidence threshold
+        iou=0.45,  # NMS IOU threshold
+        project='runs/predict',
+        name='realworld_predictions',
+        exist_ok=True,
+    )
+    
+    # Process results
+    for i, result in enumerate(results):
+        print(f"\nImage {i+1}: {result.path}")
+        print(f"Detected {len(result.boxes)} objects")
+        
+        # Access predictions
+        for box in result.boxes:
+            class_id = int(box.cls[0])
+            confidence = float(box.conf[0])
+            bbox = box.xyxy[0].tolist()  # [x1, y1, x2, y2]
+            
+            print(f"  Class: {model.names[class_id]}, "
+                  f"Confidence: {confidence:.2f}, "
+                  f"BBox: {bbox}")
+    
+    print(f"\nPredictions saved to: runs/predict/realworld_predictions")
+
 
 if __name__ == "__main__":
     # Make sure you have the ultralytics package installed
@@ -57,7 +89,10 @@ if __name__ == "__main__":
     print("=" * 50)
 
     results = train_yolo_model()
+    real_world_results = predict_new_images()
 
     print("\nTraining metrics:")
     print(f"Final mAP@50: {results.results_dict.get('metrics/mAP50(B)', 'N/A')}")
     print(f"Final mAP@50-95: {results.results_dict.get('metrics/mAP50-95(B)', 'N/A')}")
+
+    print("\nYOLOv11 fine-tuning and prediction complete!")

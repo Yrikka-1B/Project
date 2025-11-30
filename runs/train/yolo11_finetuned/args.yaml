@@ -2,7 +2,7 @@ task: detect
 mode: train
 model: yolo11n.pt
 data: dataset.yaml
-epochs: 10
+epochs: 50
 time: null
 patience: 10
 batch: 16
@@ -36,7 +36,6 @@ dropout: 0.0
 val: true
 split: val
 save_json: false
-save_hybrid: false
 conf: null
 iou: 0.7
 max_det: 300
@@ -68,7 +67,7 @@ int8: false
 dynamic: false
 simplify: true
 opset: null
-workspace: 4
+workspace: null
 nms: false
 lr0: 0.001
 lrf: 0.01
@@ -82,7 +81,6 @@ cls: 0.5
 dfl: 1.5
 pose: 12.0
 kobj: 1.0
-label_smoothing: 0.0
 nbs: 64
 hsv_h: 0.015
 hsv_s: 0.7
@@ -97,11 +95,11 @@ fliplr: 0.5
 bgr: 0.0
 mosaic: 1.0
 mixup: 0.0
+cutmix: 0.0
 copy_paste: 0.0
 copy_paste_mode: flip
 auto_augment: randaugment
 erasing: 0.4
-crop_fraction: 1.0
 cfg: null
 tracker: botsort.yaml
-save_dir: runs\train\yolo11_finetuned
+save_dir: /Users/rosariog.lara/Desktop/Project/runs/train/yolo11_finetuned
