@@ -179,7 +179,7 @@ This project is licensed under the MIT License.
 5. YRIKKA Synthetic Data Platform: https://yrikka.com/
 ---
 
-## 🙏 **Acknowledgements** (Optional but encouraged)
+## 🙏 **Acknowledgements** 
 We would like to thank:
 
 - **YRIKKA Team** (Kia Khezeli, John Kalantari, Maxim Clouser) for providing the synthetic dataset, project guidance, and domain expertise in autonomous systems
