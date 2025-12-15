@@ -11,7 +11,7 @@
 | Name             | GitHub Handle | Contribution                                                             |
 |------------------|---------------|--------------------------------------------------------------------------|
 | Mahika Acharya   | @mahikaacharya| Model training, evaluation scripts, data cleaning pipeline               |
-| Jordan Ramirez   | @jramirez     | Data collection, exploratory data analysis (EDA), dataset documentation  |
+| Vaishnavi Panchal| @vaip05       |Project setup, Script conversion creation, Model Creation, CVAT annotation|
 | Amina Hassan     | @aminahassan  | Data preprocessing, feature engineering, data validation                 |
 | Priya Mehta      | @pmehta       | Model selection, hyperparameter tuning, model training and optimization  |
 | Chris Park       | @chrispark    | Model evaluation, performance analysis, results interpretation           |
@@ -21,7 +21,7 @@
 ## 🎯 **Project Highlights**
 
 - Fine-tuned a YOLO11n object detection model on synthetic data to detect 5 everyday objects (potted plant, chair, cup, vase, book)
-- Improved model performance from ___ to ___ mAP@50 through data cleaning and fine-tuning
+- Improved model performance from 34% to 86% mAP@50 through data cleaning and fine-tuning
 - Implemented model-guided annotation correction using CVAT to fix 10% of incorrect synthetic labels
 - Developed comprehensive evaluation pipeline comparing baseline vs. fine-tuned model performance
 - Demonstrated the effectiveness of synthetic data for training object detection models
@@ -30,7 +30,6 @@
 
 ## 👩🏽‍💻 **Setup and Installation**
 
-**Provide step-by-step instructions so someone else can run your code and reproduce your results. Depending on your setup, include:**
 
 * How to clone the repository
 * How to install dependencies
@@ -158,15 +157,6 @@ Autonomous systems (drones, robots, vehicles) require robust perception systems,
 7. **Model Comparison**: Test larger YOLO variants (YOLOv8s, YOLOv8m) for performance gains
 8. **Object Variety**: Test model on various objects other than our standard 5
 
-
----
-
-## 📝 **License**
-
-If applicable, indicate how your project can be used by others by specifying and linking to an open source license type (e.g., MIT, Apache 2.0). Make sure your Challenge Advisor approves of the selected license type.
-
-**Example:**
-This project is licensed under the MIT License.
 
 ---
 
