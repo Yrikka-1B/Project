@@ -1,4 +1,4 @@
-# Your AI Studio Challenge Project Title Here
+# Bridging the Synthetic to Real Data Gap
 
 ---
 
@@ -10,9 +10,9 @@
 |------------------|---------------|--------------------------------------------------------------------------|
 | Mahika Acharya   | @mahikaacharya| Model training, evaluation scripts, data cleaning pipeline               |
 | Vaishnavi Panchal| @vaip05       |Project setup, Script conversion creation, Model Creation, CVAT annotation|
-| Amina Hassan     | @aminahassan  | Data preprocessing, feature engineering, data validation                 |
-| Priya Mehta      | @pmehta       | Model selection, hyperparameter tuning, model training and optimization  |
-| Chris Park       | @chrispark    | Model evaluation, performance analysis, results interpretation           |
+|                  | @             |                                                                          |
+|                  | @             |                                                                          |
+|                  | @             |                                                                          |
 
 ---
 
@@ -27,7 +27,7 @@
 
 ## 👩🏽‍💻 **Setup and Installation**
 
-To set up the project, first clone the repository and cd into it.
+To set up the project, first clone the repository and cd into it. Install all dependencies using this command:
 
 ```bash
 pip install -r requirements.txt
@@ -114,11 +114,15 @@ Autonomous systems (drones, robots, vehicles) require robust perception systems,
 ### Key Insights from EDA
 
 **Class Distribution (Validation Set):**
-- Chair: __ instances (__%) - Most represented
-- Book: __ instances (__%)
-- Cup: __ instances (__%)
-- Vase: __ instances (__%)
-- Potted plant: __ instances (__%) - Severely underrepresented
+- Chair: 21.95%
+
+- Potted plant: 24.39%
+
+- Vase: 10.98%
+
+- Book: 30.49% > Most represented
+
+- Cup: 12.20% > Severely underrepresented
 
 **Challenges:**
 - Severe class imbalance affecting model performance
@@ -126,9 +130,6 @@ Autonomous systems (drones, robots, vehicles) require robust perception systems,
 - Invalid class IDs from COCO-to-YOLO conversion
 - Duplicate bounding boxes removed during training
   
-**Potential visualizations to include:**
-
-* Plots, charts, heatmaps, feature visualizations, sample dataset images
 
 ---
 
