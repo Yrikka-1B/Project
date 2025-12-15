@@ -16,7 +16,6 @@
 
 ---
 
-## 🎯 **Project Highlights**
 
 - Fine-tuned a YOLO11n object detection model on synthetic data to detect 5 everyday objects (potted plant, chair, cup, vase, book)
 - Improved model performance from 34% to 86% mAP@50 through data cleaning and fine-tuning
@@ -28,10 +27,48 @@
 
 ## 👩🏽‍💻 **Setup and Installation**
 
-To setup the project, first clone the repository and cd into it. 
-Then, use the command ```bash
+To set up the project, first clone the repository and cd into it.
+
+```bash
 pip install -r requirements.txt
-```in order to install all dependencies. To ensure the target data only contains the five target classfiles, run the clean_and_merge_dataset.py script. Next, run convert_coco_to_yolo script in order to create the yaml file needed for annotation. Run split_dataset.py to prepare the data for training and testing. To run the YOLO model for baseline testing, run run_inference_and_score.py script. Next, fix the labels using the fix_labels.py script, and then use the train_coco.py script to use the corrected annotations for model evaluation.
+```
+
+Next, run the script to ensure the dataset only contains the five target classes:
+
+```bash
+python clean_and_merge_dataset.py
+```
+
+Convert the cleaned COCO dataset into YOLO format:
+
+```bash
+python convert_coco_to_yolo.py
+```
+
+Split the dataset into train/val/test:
+
+```bash
+python split_dataset.py
+```
+
+Run the YOLO model for baseline inference:
+
+```bash
+python run_inference_and_score.py
+```
+
+Identify misclassified images and prepare them for CVAT:
+
+```bash
+python fix_labels.py
+```
+
+Finally, train the model using corrected annotations:
+
+```bash
+python train_coco.py
+```
+
 
 ---
 
