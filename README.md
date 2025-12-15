@@ -34,7 +34,6 @@ git clone https://github.com/Yrikka-1B/Project.git
 cd Project
 ```
 
----
 
 ### 2. (Optional) Create and activate a virtual environment
 
@@ -44,7 +43,6 @@ source .venv/bin/activate        # macOS / Linux
 # .venv\Scripts\activate         # Windows
 ```
 
----
 
 ### 3. Install all required dependencies
 
@@ -52,7 +50,6 @@ source .venv/bin/activate        # macOS / Linux
 pip install -r requirements.txt
 ```
 
----
 
 ## How to Run the Pipeline
 
@@ -62,7 +59,6 @@ pip install -r requirements.txt
 python clean_and_merge_dataset.py
 ```
 
----
 
 ### 5. Convert COCO → YOLO format
 
@@ -70,7 +66,6 @@ python clean_and_merge_dataset.py
 python convert_coco_to_yolo.py
 ```
 
----
 
 ### 6. Run YOLO baseline inference
 
@@ -78,7 +73,6 @@ python convert_coco_to_yolo.py
 python run_inference_and_score.py
 ```
 
----
 
 ### 7. (Optional) Train or evaluate the YOLO model
 
