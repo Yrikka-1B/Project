@@ -5,13 +5,13 @@
 ### 👥 **Team Members**
 
 
-| Name             | GitHub Handle | Contribution                                                             |
-|------------------|---------------|--------------------------------------------------------------------------|
-| Mahika Acharya   | @mahikaacharya| Model training, evaluation scripts, data cleaning pipeline               |
-| Vaishnavi Panchal| @vaip05       |Project setup, Script conversion creation, Model Creation, CVAT annotation|
-| Aaron Rivera     | @senoraaron   | CVAT annotation                                                          |
-|                  | @             |                                                                          |
-|                  | @             |                                                                          |
+| Name             | GitHub Handle | Contribution                                                               |
+|------------------|---------------|----------------------------------------------------------------------------|
+| Mahika Acharya   | @mahikaacharya| Model training, evaluation scripts, data cleaning pipeline                 |
+| Vaishnavi Panchal| @vaip05       | Project setup, Script conversion creation, Model Creation, CVAT annotation |
+| Medha Yasa       | @myasa321     | Data preprocessing, model optimization, data collection                    |
+| Aaron Rivera     | @senoraaron   | CVAT annotation                                                            |
+|                  | @             |                                                                            |
 
 ---
 
@@ -172,15 +172,29 @@ Autonomous systems (drones, robots, vehicles) require robust perception systems,
 
 ## 📈 **Results & Key Findings**
 
-**You might consider describing the following (as applicable):**
+Fine-tuning the YOLO model using corrected synthetic annotations resulted in a substantial improvement in detection performance across most classes.
 
-* Performance metrics (e.g., Accuracy, F1 score, RMSE)
-* How your model performed
-* Insights from evaluating model fairness
+Key metrics after fine-tuning:
+ - mAP@0.5: 86% (up from 57% before correction and fine-tuning)
+ - Precision: 82%
+ - Recall: 34%
 
-**Potential visualizations to include:**
+The increase in precision indicates that the model makes more reliable predictions at higher confidence thresholds. While recall decreased, this is expected due to stricter bounding-box localization requirements introduced during fine-tuning.
 
-* Confusion matrix, precision-recall curve, feature importance plot, prediction distribution, outputs from fairness or explainability tools
+Overall, the precision-recall curve demonstrates that the fine-tuned model is both more confident and more accurate compared to the baseline model trained on uncorrected synthetic data.
+
+<img width="544" height="358" alt="image" src="https://github.com/user-attachments/assets/ba874dfe-834b-4a31-8b6f-106c4711b95e" />
+
+The largest performance gain were observed for:
+ - Vase
+ - Cup
+ - Chair
+
+These objects have consistent shapes and textures, making them well-suited for synthetic training. In contrast, potted plants showed reduced recall due to high real-world variability.
+
+Insights
+ - Correcting synthetic labels in CVAT led to a major performance jump, demonstrating the importance of annotation quality
+ - The selected hyperparameters were effective for most classes, though additional augmentation may be needed for highly variable objects
 
 ---
 
