@@ -4,7 +4,6 @@
 
 ### 👥 **Team Members**
 
-**Example:**
 
 | Name             | GitHub Handle | Contribution                                                             |
 |------------------|---------------|--------------------------------------------------------------------------|
@@ -194,7 +193,7 @@ Autonomous systems (drones, robots, vehicles) require robust perception systems,
 
 ---
 
-## 📄 **References** (Optional but encouraged)
+## 📄 **References** 
 
 1. Ultralytics YOLO11 Documentation: https://docs.ultralytics.com/
 2. CVAT (Computer Vision Annotation Tool): https://www.cvat.ai/
