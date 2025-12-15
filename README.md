@@ -26,46 +26,64 @@
 
 ## 👩🏽‍💻 **Setup and Installation**
 
-To set up the project, first clone the repository and cd into it. Install all dependencies using this command:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Yrikka-1B/Project.git
+cd Project
+```
+
+---
+
+### 2. (Optional) Create and activate a virtual environment
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate        # macOS / Linux
+# .venv\Scripts\activate         # Windows
+```
+
+---
+
+### 3. Install all required dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Next, run the script to ensure the dataset only contains the five target classes:
+---
+
+## How to Run the Pipeline
+
+### 4. Clean and merge the dataset
 
 ```bash
 python clean_and_merge_dataset.py
 ```
 
-Convert the cleaned COCO dataset into YOLO format:
+---
+
+### 5. Convert COCO → YOLO format
 
 ```bash
 python convert_coco_to_yolo.py
 ```
 
-Split the dataset into train/val/test:
+---
 
-```bash
-python split_dataset.py
-```
-
-Run the YOLO model for baseline inference:
+### 6. Run YOLO baseline inference
 
 ```bash
 python run_inference_and_score.py
 ```
 
-Identify misclassified images and prepare them for CVAT:
+---
+
+### 7. (Optional) Train or evaluate the YOLO model
 
 ```bash
-python fix_labels.py
-```
-
-Finally, train the model using corrected annotations:
-
-```bash
-python train_coco.py
+python train_yolo.py
 ```
 
 
