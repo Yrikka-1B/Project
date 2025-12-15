@@ -9,7 +9,7 @@
 |------------------|---------------|--------------------------------------------------------------------------|
 | Mahika Acharya   | @mahikaacharya| Model training, evaluation scripts, data cleaning pipeline               |
 | Vaishnavi Panchal| @vaip05       |Project setup, Script conversion creation, Model Creation, CVAT annotation|
-|                  | @             |                                                                          |
+| Aaron Rivera     | @senoraaron   | CVAT annotation                                                          |
 |                  | @             |                                                                          |
 |                  | @             |                                                                          |
 
