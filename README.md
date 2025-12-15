@@ -1,7 +1,5 @@
 # Your AI Studio Challenge Project Title Here
 
-⚠️ _Update the above title with your AI Studio Challenge Project name. Remove all guidance notes and examples in this template before finalizing your README._
-
 ---
 
 ### 👥 **Team Members**
@@ -30,12 +28,7 @@
 
 ## 👩🏽‍💻 **Setup and Installation**
 
-
-* How to clone the repository
-* How to install dependencies
-* How to set up the environment
-* How to access the dataset(s)
-* How to run the notebook or scripts
+TTo setup the project, first clone the repository and cd into it. Then, use the command pip -r requirements.txt in order to install all dependencies. To ensure the target data only contains the five target classfiles, run the clean_and_merge_dataset.py script. Next, run convert_coco_to_yolo script in order to create the yaml file needed for annotation. Run split_dataset.py to prepare the data for training and testing. To run the YOLO model for baseline testing, run run_inference_and_score.py script. Next, fix the labels using the fix_labels.py script, and then use the train_coco.py script to use the corrected annotations for model evaluation.
 
 ---
 
