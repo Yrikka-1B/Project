@@ -11,7 +11,7 @@
 | Vaishnavi Panchal| @vaip05       | Project setup, Script conversion creation, Model Creation, CVAT annotation |
 | Medha Yasa       | @myasa321     | Data preprocessing, model optimization, data collection                    |
 | Aaron Rivera     | @senoraaron   | CVAT annotation                                                            |
-|                  | @             |                                                                            |
+| Rosario Lara     | @rosarioglara | CVAT Annotation, model training and evaluation, model fine-tuning          |
 
 ---
 
